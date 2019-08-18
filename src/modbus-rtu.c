@@ -917,6 +917,7 @@ int modbus_rtu_set_serial_mode(modbus_t *ctx, int mode)
             }
             // Set
             rs485conf.flags |= SER_RS485_ENABLED;
+	    rs485conf.flags |= SER_RS485_RTS_ON_SEND;
             if (ioctl(ctx->s, TIOCSRS485, &rs485conf) < 0) {
                 return -1;
             }
